@@ -29,6 +29,12 @@ Run compile but not create binary.
 cargo check
 ```
 
+## Test
+
+```bash
+cargo test
+```
+
 ## Build as release version
 
 Create optimized binary.
