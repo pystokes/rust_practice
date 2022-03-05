@@ -1,14 +1,24 @@
 use actix_web::{web, App, HttpResponse, HttpServer};
+use serde::Deserialize;
+
+mod utils;
+
+#[derive(Deserialize)]
+struct GcdParameters {
+    n: u64,
+    m: u64,
+}
 
 fn main() {
     let server = HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(get_index))
+            .route("/gcd", web::post().to(post_gcd))
     });
 
     println!("Serving on http://localhost:3000...");
     server
-        .bind("1127.0.0.1:3000").expecct("error binding server to address")
+        .bind("0.0.0.0:3000").expect("error binding server to address")
         .run().expect("error running server");
 }
 
@@ -25,4 +35,21 @@ fn get_index() -> HttpResponse {
                 </form>
             "#,
         )
+}
+
+fn post_gcd(form: web::Form<GcdParameters>) -> HttpResponse {
+    if form.n == 0 || form.m == 0 {
+        return HttpResponse::BadRequest()
+            .content_type("text/html")
+            .body("Computing the GCD with zero is boring.");
+    }
+
+    let response =
+        format!("The greatest common divisor of the numbers {} and {} \
+                 is <b>{}</b>\n",
+                form.n, form.m, utils::gcd::gcd(form.n, form.m));
+    
+    HttpResponse::Ok()
+        .content_type("text/html")
+        .body(response)
 }

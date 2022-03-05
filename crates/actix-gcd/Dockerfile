@@ -1,9 +1,13 @@
 # -------------------------------------------------------------------------------------------
 # Dockerfile
 #
-# docker build --platform linux/amd64 -t rust .
-# docker run -it --rm --platform linux/amd64 -v `pwd`:/rust/ rust
+# docker build -t rust_app .
+# docker run -it --rm -p 3000:3000 -v `pwd`:/app rust_app
 # -------------------------------------------------------------------------------------------
 
 FROM rust:1.59.0
-WORKDIR /rust
+
+COPY . /app
+EXPOSE 3000
+
+WORKDIR /app
