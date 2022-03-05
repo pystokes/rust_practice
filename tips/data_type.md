@@ -91,6 +91,13 @@ fn main() {
 ```
 
 ```rust
+let mut v = vec![1, 2, 3];
+let mut v1 = vec![5, 6, 7];
+v.insert(1, 10);
+v.append(&mut v1); // Note: v1 will be moved
+```
+
+```rust
 // Multi types in a vector
 enum SpredsheetCell {
     Int(i32),
@@ -105,4 +112,9 @@ fn main() {
         SpredsheetCell::Float(10.12),
     ];
 }
+```
+
+```rust
+let mut s = String::from("hello");
+s.push_str(" world");
 ```

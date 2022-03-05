@@ -5,5 +5,5 @@
 # docker run -it --rm --platform linux/amd64 -v `pwd`:/rust/ rust
 # -------------------------------------------------------------------------------------------
 
-FROM rust:1.58.1
+FROM amd64/rust:1.59.0
 WORKDIR /rust
