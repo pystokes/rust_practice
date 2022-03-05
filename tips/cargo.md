@@ -8,36 +8,39 @@ cargo new PROJECT_NAME --bin
 
 ## Build
 
+-> target/debug/BINARY
+
 ```bash
-# Build only -> @ target/debug/BINARY
 cargo build
 ```
 
 ## Build and run
 
 ```bash
-# Build and run
 cargo run
 ```
 
 ## Check (Not compile)
 
+Check compilable or not.  
+Run compile but not create binary.
+
 ```bash
-# Check compilable or not
-# Run compile but not create binary
 cargo check
 ```
 
 ## Build as release version
 
+Create optimized binary.
+
 ```bash
-# Release (Create optimized binary)
 cargo build --release
 ```
 
 ## Update Cargo.lock
 
+Update `Cargo.lock`.
+
 ```bash
-# Update Cargo.lock
 cargo update
 ```
